@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>常见问题 &mdash; Domain Admin latest 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="扩展插件" href="plugins.html" />
+    <link rel="prev" title="SSL证书申请" href="ssl-cert.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Domain Admin
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">安装方式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notify.html">通知配置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssl-cert.html">SSL证书申请</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1、暂不支持多进程方式启动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2、为什么外网访问不到？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-fcntl">3、Windows平台启动报错,找不到模块 <code class="docutils literal notranslate"><span class="pre">fcntl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">4、添加域名数据后系统异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">5、邮件发送失败</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">7、监控域名非443的端口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">8、修改数据库链接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prometheus-metrics">10、支持<code class="docutils literal notranslate"><span class="pre">prometheus</span></code> 的<code class="docutils literal notranslate"><span class="pre">/metrics</span></code>接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">11、部分域名无法查询到信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ingress">12、获取ingress的域名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">13、证书监控原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">14、域名监控原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">15、提示缺少依赖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">16、主机地址显示错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#admin">17、忘记admin密码怎么办</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#database-is-locked">18、database is locked</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python2-7">19、Python2.7 依赖问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grafana">20、grafana 的展示模版</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">扩展插件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan.html">开发计划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">二次开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">升级日志</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article.html">相关文章</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Domain Admin</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">常见问题</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/manual/question.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>常见问题<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<section id="id2">
+<h2>1、暂不支持多进程方式启动<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<p>使用 master + 多worker 方式启动应用，会启动多个定时任务Scheduler，导致多次执行任务</p>
+<p>如果小规模使用，启动一个进程即可</p>
+<p>如果是需要支持并发访问，可自行改进应用</p>
+<p>将定时器独立出来，单独一个进程控制，行成 scheduler + Flask（master + 多worker）</p>
+</section>
+<section id="id3">
+<h2>2、为什么外网访问不到？<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span># 启动运行
+$ gunicorn &#39;domain_admin.main:app&#39;
+
+# 支持外网可访问，云服务器（阿里云或腾讯云）需要设置安全组
+# 默认内网访问 --bind 127.0.0.1:8000
+$ gunicorn --bind &#39;0.0.0.0:8000&#39; domain_admin.main:app&#39;
+</pre></div>
+</div>
+<p>更多设置，可参考<a class="reference external" href="https://docs.gunicorn.org/en/stable/index.html">gunicorn</a></p>
+</section>
+<section id="windows-fcntl">
+<h2>3、Windows平台启动报错,找不到模块 <code class="docutils literal notranslate"><span class="pre">fcntl</span></code><a class="headerlink" href="#windows-fcntl" title="此标题的永久链接"></a></h2>
+<p>gunicorn不支持Windows，可以使用<a class="reference external" href="https://github.com/Pylons/waitress">waitress</a> 替换，感谢<a class="reference external" href="https://github.com/cbr252522489">&#64;cbr252522489</a>提供的解决方案</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>waitress
+
+$<span class="w"> </span>waitress-serve<span class="w"> </span>--listen<span class="o">=</span><span class="m">127</span>.0.0.1:8000<span class="w"> </span>domain_admin.main:app
+</pre></div>
+</div>
+<p>参考：<a class="reference external" href="https://stackoverflow.com/questions/45228395/error-no-module-named-fcntl">https://stackoverflow.com/questions/45228395/error-no-module-named-fcntl</a></p>
+</section>
+<section id="id4">
+<h2>4、添加域名数据后系统异常<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<p>可按如下步骤删除异常数据</p>
+<p>docker 启动方式</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看容器的运行信息</span>
+$<span class="w"> </span>docker<span class="w"> </span>ps
+
+<span class="c1"># 进入容器</span>
+$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;容器id&gt;<span class="w"> </span>/bin/sh
+
+<span class="c1"># 安装依赖</span>
+$<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>sqlite
+
+<span class="c1"># 进入sqlite3</span>
+$<span class="w"> </span>sqlite3
+
+sqlite&gt;<span class="w"> </span>.open<span class="w"> </span>/app/database/database.db
+
+sqlite&gt;<span class="w"> </span>.tables
+log_scheduler<span class="w">  </span>tb_group<span class="w">       </span>tb_system<span class="w">      </span>tb_version
+tb_domain<span class="w">      </span>tb_notify<span class="w">      </span>tb_user
+
+<span class="c1"># 查看数据</span>
+sqlite&gt;<span class="w"> </span><span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span>tb_domain<span class="p">;</span>
+
+<span class="c1"># 删除数据</span>
+sqlite&gt;<span class="w"> </span>DELETE<span class="w"> </span>FROM<span class="w"> </span>tb_domain<span class="w"> </span>WHERE<span class="w"> </span><span class="nv">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">;</span>
+
+<span class="c1"># 退出</span>
+sqlite&gt;<span class="w"> </span>.quit
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>5、邮件发送失败<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<p>可尝试更换端口：25、465、587</p>
+</section>
+<section id="id6">
+<h2>7、监控域名非443的端口<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
+<p>域名格式</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">域名</span><span class="p">:</span><span class="n">端口</span>
+
+<span class="n">eg</span><span class="p">:</span>
+
+<span class="n">www</span><span class="o">.</span><span class="n">baidu</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">8080</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>8、修改数据库链接<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h2>
+<p>系统默认使用sqlite数据库作为后端存储，仅支持单线程操作</p>
+<p>如果操作频繁会出现<code class="docutils literal notranslate"><span class="pre">database</span> <span class="pre">locked</span></code> 提示，就是数据库锁表了，可以更换后端存储为mysql，或者其他数据库</p>
+<p>通过配置<code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件或者直接设置系统环境变量</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># sqlite 默认</span>
+<span class="nv">DB_CONNECT_URL</span><span class="o">=</span>sqlite:///database/database.db
+
+<span class="c1"># mysql</span>
+<span class="c1"># 需要安装模块 pymysql</span>
+<span class="c1"># pip install pymysql</span>
+<span class="nv">DB_CONNECT_URL</span><span class="o">=</span>mysql://root:123456@127.0.0.1:3306/data_domain
+
+<span class="c1"># 来自群友 @〖斗魂〗繁←星 的分享</span>
+<span class="c1"># 如果 mysql 开启了 ssl，mysql 连接字符串应该写成</span>
+<span class="nv">DB_CONNECT_URL</span><span class="o">=</span>mysql://root:123456@127.0.0.1:3306/data_domain?ssl_verify_cert<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># postgresql</span>
+<span class="nv">DB_CONNECT_URL</span><span class="o">=</span>postgresql://root:123456@localhost:5432/data_domain
+</pre></div>
+</div>
+<p>说明：以上配置示例，需要提前创建名为<code class="docutils literal notranslate"><span class="pre">data_domain</span></code> 的数据库，也可以自定义其他名称的数据库</p>
+<p>更多mysql的设置可参考：<a class="reference external" href="https://pymysql.readthedocs.io/en/latest/modules/connections.html">https://pymysql.readthedocs.io/en/latest/modules/connections.html</a></p>
+</section>
+<section id="prometheus-metrics">
+<h2>10、支持<code class="docutils literal notranslate"><span class="pre">prometheus</span></code> 的<code class="docutils literal notranslate"><span class="pre">/metrics</span></code>接口<a class="headerlink" href="#prometheus-metrics" title="此标题的永久链接"></a></h2>
+<p>请求地址：<a class="reference external" href="http://127.0.0.1:8000/metrics">http://127.0.0.1:8000/metrics</a></p>
+<p>示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">metrics</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Authorization</span><span class="p">:</span> <span class="n">Bearer</span> <span class="o">&lt;</span><span class="n">token</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>1、第一步、需要在 <code class="docutils literal notranslate"><span class="pre">系统设置/API</span> <span class="pre">KEY</span></code> 获取授权key</p>
+<p>2、第二步、配置 prometheus.yml</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scrape_configs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">bearer_token</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;f60c03bfff8bb42dcf6821542e5fd11e&#39;</span>
+</pre></div>
+</div>
+<p>如果是夜莺-Nightingale <a class="reference external" href="https://flashcat.cloud/docs/content/flashcat-monitor/categraf/plugin/prometheus/">参考文档</a></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[[</span><span class="nv">instances.domain</span><span class="p p-Indicator">]]</span>
+<span class="l l-Scalar l-Scalar-Plain">urls = [</span>
+<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">&quot;http://127.0.0.1:8000/metrics&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">]</span>
+
+<span class="l l-Scalar l-Scalar-Plain">url_label_key = &quot;instance&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">url_label_value = &quot;{{.Host}}&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">headers = [&quot;Authorization&quot;, &quot;Bearer f60c03bfff8bb42dcf6821542e5fd11e&quot;]</span>
+</pre></div>
+</div>
+<p>该配置由<a class="reference external" href="https://github.com/1275788667">&#64;1275788667</a> 提供</p>
+<p>返回数据示例：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># HELP domain_admin this is a domain admin data
+# TYPE domain_admin gauge
+domain_admin{domain=&quot;pgmanage.qnvip.com&quot;} 0.0
+domain_admin{domain=&quot;fanyi.baidu.com&quot;} 37.0
+domain_admin{domain=&quot;www.tmall.com&quot;} 37.0
+domain_admin{domain=&quot;www.baidu.com&quot;} 37.0
+domain_admin{domain=&quot;www.taobao.com&quot;} 37.0
+</pre></div>
+</div>
+<p>&#64;since v1.5.27 升级为</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># HELP domain_admin this is a domain admin data</span>
+<span class="c1"># TYPE domain_admin gauge 证书列表数据</span>
+<span class="n">domain_admin</span><span class="p">{</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;www.baidu.com&quot;</span><span class="p">,</span><span class="n">group_name</span><span class="o">=</span><span class="s2">&quot;百度系&quot;</span><span class="p">,</span><span class="n">root_domain</span><span class="o">=</span><span class="s2">&quot;baidu.com&quot;</span><span class="p">}</span> <span class="mf">258.0</span>
+<span class="n">domain_admin</span><span class="p">{</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;www.163.com&quot;</span><span class="p">,</span><span class="n">group_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">root_domain</span><span class="o">=</span><span class="s2">&quot;163.com&quot;</span><span class="p">}</span> <span class="mf">153.0</span>
+<span class="c1"># HELP domain_info this is a domain info data</span>
+<span class="c1"># TYPE domain_info gauge 域名列表数据</span>
+<span class="n">domain_info</span><span class="p">{</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;163.com&quot;</span><span class="p">,</span><span class="n">group_name</span><span class="o">=</span><span class="s2">&quot;百度系&quot;</span><span class="p">}</span> <span class="mf">1392.0</span>
+<span class="n">domain_info</span><span class="p">{</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;qq.com&quot;</span><span class="p">,</span><span class="n">group_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">}</span> <span class="mf">3535.0</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h2>11、部分域名无法查询到信息<a class="headerlink" href="#id10" title="此标题的永久链接"></a></h2>
+<p>已知不支持的域名后缀：<code class="docutils literal notranslate"><span class="pre">.lc</span></code>、<code class="docutils literal notranslate"><span class="pre">.ml</span></code>、<code class="docutils literal notranslate"><span class="pre">.ai</span></code>、<code class="docutils literal notranslate"><span class="pre">.my</span></code>、<code class="docutils literal notranslate"><span class="pre">.ch</span></code>、<code class="docutils literal notranslate"><span class="pre">.edu.cn</span></code>、<code class="docutils literal notranslate"><span class="pre">.name</span></code></p>
+</section>
+<section id="ingress">
+<h2>12、获取ingress的域名<a class="headerlink" href="#ingress" title="此标题的永久链接"></a></h2>
+<p>从k8s里面自动获取ingress的域名，然后添加到domain-admin里面</p>
+<p>安装依赖</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>tldextract<span class="w"> </span>requests<span class="w"> </span>kubernetes
+</pre></div>
+</div>
+<p>参考代码 由群友 <code class="docutils literal notranslate"><span class="pre">&#64;旺仔牛奶</span></code> 贡献</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">kubernetes</span> <span class="kn">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">client</span>
+<span class="kn">import</span> <span class="nn">tldextract</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">get_token</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/api/login&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">password</span>
+    <span class="p">}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">token</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;token&#39;</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">token</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">add_domain</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/api/addDomainInfo&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;domain&#39;</span><span class="p">:</span> <span class="n">domain</span>
+    <span class="p">}</span>
+    <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;X-Token&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">load_incluster_config</span><span class="p">()</span>
+    <span class="n">kube_api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ExtensionsV1beta1Api</span><span class="p">()</span>
+    <span class="n">ingresses</span> <span class="o">=</span> <span class="n">kube_api</span><span class="o">.</span><span class="n">list_ingress_for_all_namespaces</span><span class="p">()</span>
+    <span class="n">_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ingresses</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NAMESPACE_MATCH&#39;</span><span class="p">),</span> <span class="n">item</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">namespace</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NAMESPACE_NOT_MATCH&#39;</span><span class="p">),</span> <span class="n">item</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">namespace</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">rules</span><span class="p">:</span>
+            <span class="n">domain</span> <span class="o">=</span> <span class="n">tldextract</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">rule</span><span class="o">.</span><span class="n">host</span><span class="p">)</span><span class="o">.</span><span class="n">registered_domain</span>
+            <span class="n">_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">get_token</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DOMAIN_ADMIN_HOST&#39;</span><span class="p">),</span>
+                      <span class="n">username</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DOMAIN_ADMIN_USERNAME&#39;</span><span class="p">),</span>
+                      <span class="n">password</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DOMAIN_ADMIN_PASSWORD&#39;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">_set</span><span class="p">:</span>
+        <span class="n">add_domain</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DOMAIN_ADMIN_HOST&#39;</span><span class="p">),</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">item</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h2>13、证书监控原理<a class="headerlink" href="#id11" title="此标题的永久链接"></a></h2>
+<p>第一步：<code class="docutils literal notranslate"><span class="pre">证书数据更新</span></code>：通过实时访问网站，取回网站部署的证书，解析证书签发时间和过期时间，更新到数据库</p>
+<p>第二步：<code class="docutils literal notranslate"><span class="pre">到期通知</span></code>：通过配置好的通知触发条件，查询数据库，如果查询到记录则发送通知，没有查询到数据就忽略</p>
+<blockquote>
+<div><p>如果网站不可访问，可以将 <code class="docutils literal notranslate"><span class="pre">自动更新</span></code> 关闭，不影响到期通知</p>
+</div></blockquote>
+</section>
+<section id="id12">
+<h2>14、域名监控原理<a class="headerlink" href="#id12" title="此标题的永久链接"></a></h2>
+<p>第一步：<code class="docutils literal notranslate"><span class="pre">域名数据更新</span></code>：通过访问域名服务器，取回域名信息，解析出域名注册时间和过期时间，更新到数据库</p>
+<p>第二步：<code class="docutils literal notranslate"><span class="pre">到期通知</span></code>：通过配置好的通知触发条件，查询数据库，如果查询到记录则发送通知，没有查询到数据就忽略</p>
+<blockquote>
+<div><p>如果域名查询不到信息，可以将 <code class="docutils literal notranslate"><span class="pre">自动更新</span></code> 关闭，不影响到期通知
+考虑到域名注册后到期时间不会改变，所以增加了到期前<code class="docutils literal notranslate"><span class="pre">30</span></code> 天才更新域名信息的条件，减少程序运行时间；
+如果实时查询域名信息，请求过快会被域名信息服务器会拦截，从而查询不到域名信息，触发误报的问题</p>
+</div></blockquote>
+</section>
+<section id="id13">
+<h2>15、提示缺少依赖<a class="headerlink" href="#id13" title="此标题的永久链接"></a></h2>
+<p>可参考网友写的总结文章：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.csdn.net/u013901725/article/details/132394530">domain-admin域名监控的源码搭建</a></p></li>
+</ul>
+</section>
+<section id="id14">
+<h2>16、主机地址显示错误<a class="headerlink" href="#id14" title="此标题的永久链接"></a></h2>
+<p>由于系统不会主动清空已存在的主机地址，对于CND等证书，可以打开【动态主机】，每次更新数据都会先清空主机IP列表，重新获取数据，避免误报的问题。</p>
+</section>
+<section id="admin">
+<h2>17、忘记admin密码怎么办<a class="headerlink" href="#admin" title="此标题的永久链接"></a></h2>
+<p>把数据库表<code class="docutils literal notranslate"><span class="pre">tb_user</span></code>密码字段<code class="docutils literal notranslate"><span class="pre">password</span></code>替换为这个：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$2</span>b<span class="nv">$12$c</span>/tJvOYaWxzis4CXSyGN9ua4B7wzor8j9WrGsgV/2pdJnsrAMJxiK
+</pre></div>
+</div>
+<p>可以重置为：123456</p>
+<p>示例</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="o">#</span><span class="w"> </span><span class="n">sqlite3</span>
+<span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ATTACH</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="s1">&#39;/opt/domain-admin/database/database.db&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mydatabase</span><span class="p">;</span>
+<span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">tb_user</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;$2b$12$c/tJvOYaWxzis4CXSyGN9ua4B7wzor8j9WrGsgV/2pdJnsrAMJxiK&quot;</span><span class="w"> </span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="database-is-locked">
+<h2>18、database is locked<a class="headerlink" href="#database-is-locked" title="此标题的永久链接"></a></h2>
+<p>数据库锁表了，由于默认使用sqlite数据库，不支持多线程操作</p>
+<p>如果遇到此提示，可以等待一会再进行操作</p>
+<p>还可以直接换成mysql数据库，参考<a class="reference external" href="https://domain-admin.readthedocs.io/zh_CN/latest/manual/install.html#id5">可选配置</a></p>
+</section>
+<section id="python2-7">
+<h2>19、Python2.7 依赖问题<a class="headerlink" href="#python2-7" title="此标题的永久链接"></a></h2>
+<p>可以手动安装适合Python2.7 的依赖版本，也可以使用整理好的依赖文件</p>
+<p><a class="reference external" href="https://github.com/mouday/domain-admin/blob/master/requirements/production-2.7.txt">production-2.7.txt</a></p>
+</section>
+<section id="grafana">
+<h2>20、grafana 的展示模版<a class="headerlink" href="#grafana" title="此标题的永久链接"></a></h2>
+<p>可参考群友 友志 提供的模板</p>
+<p><a class="reference external" href="https://grafana.com/grafana/dashboards/14605-domain-exporter-for-prometheus/">https://grafana.com/grafana/dashboards/14605-domain-exporter-for-prometheus/</a></p>
+<p><a class="reference external" href="https://grafana.com/grafana/dashboards/13924-9116-domain/">https://grafana.com/grafana/dashboards/13924-9116-domain/</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="ssl-cert.html" class="btn btn-neutral float-left" title="SSL证书申请" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="plugins.html" class="btn btn-neutral float-right" title="扩展插件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Peng Shiyu.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

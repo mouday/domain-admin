@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>通知配置 &mdash; Domain Admin latest 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="SSL证书申请" href="ssl-cert.html" />
+    <link rel="prev" title="安装方式" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Domain Admin
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">安装方式</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">通知配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1、邮件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#webhook">2、WebHook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.1、webhook发送微信消息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.2、webhook发送钉钉消息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webhookresend">2.3、webhook发送Resend邮件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webhookshowdoc">2.4、webhook配置showdoc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.5、webhook发送飞书消息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">2.6、webhook发送企业微信消息</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">3、企业微信</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">4、钉钉</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">5、飞书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">6、模板和参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">6.1、通用示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">6.2、域名到期</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ssl">6.3、SSL证书到期</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">6.4、监控异常</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ssl-cert.html">SSL证书申请</a></li>
+<li class="toctree-l1"><a class="reference internal" href="question.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">扩展插件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan.html">开发计划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">二次开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">升级日志</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article.html">相关文章</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Domain Admin</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">通知配置</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/manual/notify.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>通知配置<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<blockquote>
+<div><p>备注：如果点击<code class="docutils literal notranslate"><span class="pre">测试</span></code> 无法接收到消息，可尝试给<code class="docutils literal notranslate"><span class="pre">剩余天数</span></code> 设置一个比较大的值大</p>
+</div></blockquote>
+<section id="id2">
+<h2>1、邮件<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<p>第一步：需要在 <code class="docutils literal notranslate"><span class="pre">系统管理/系统设置/邮箱设置</span></code> 中设置好系统发件邮件</p>
+<blockquote>
+<div><p>如果需要对域名进行到期监控和邮件提醒，必须设置发件邮件</p>
+</div></blockquote>
+<p>注意：</p>
+<ol class="arabic simple">
+<li><p>如果使用的是163邮箱，密码处填写的是<code class="docutils literal notranslate"><span class="pre">授权码</span></code></p></li>
+</ol>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/mouday/domain-admin/master/image/system-list.png"><img alt="" src="https://raw.githubusercontent.com/mouday/domain-admin/master/image/system-list.png" /></a>
+<p>第二步：填写收件人列表</p>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/mouday/domain-admin/master/image/notify-email.png"><img alt="" src="https://raw.githubusercontent.com/mouday/domain-admin/master/image/notify-email.png" /></a>
+<p>需要填写json格式的数据，例如：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;tom@qq.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;jack@qq.com&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="webhook">
+<h2>2、WebHook<a class="headerlink" href="#webhook" title="此标题的永久链接"></a></h2>
+<section id="id3">
+<h3>2.1、webhook发送微信消息<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h3>
+<p>可以使用的微信推送平台有很多，可以参考</p>
+<p><a class="reference external" href="https://pengshiyu.blog.csdn.net/article/details/124135877">微信推送消息通知接口汇总</a></p>
+</section>
+<section id="id5">
+<h3>2.2、webhook发送钉钉消息<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h3>
+<p>获取请求地址</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://oapi.dingtalk.com/robot/send?access_token=&lt;access_token&gt;
+</pre></div>
+</div>
+<p>设置请求头</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>设置请求体</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;msgtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="s2">&quot;监控报警: 我就是我, 是不一样的烟火&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>使用模板的请求体示例</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;msgtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{% for row in list %}{{row.domain}} {{row.start_date or &#39;-&#39; }} - {{row.expire_date or &#39;-&#39; }} ({{row.expire_days}}){% endfor %}&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>可以参考 <a class="reference external" href="https://github.com/PanZongQing">&#64;PanZongQing</a> 分享的钉钉webhook配置：</p>
+<p><a class="reference external" href="https://github.com/mouday/domain-admin/issues/47">对接钉钉群内自定义webhook机器人发送告警注意事项</a></p>
+</section>
+<section id="webhookresend">
+<h3>2.3、webhook发送Resend邮件<a class="headerlink" href="#webhookresend" title="此标题的永久链接"></a></h3>
+<p>Resend 是一个为开发者提供的email 接口</p>
+<p>工作原理：通过api接口使用HTTP协议发送邮件到Resend服务器，再通过Resend服务器使用SMTP协议发送邮件到目标邮箱</p>
+<p>步骤：</p>
+<p>1、注册账号:<a class="reference external" href="https://resend.com/">https://resend.com/</a></p>
+<p>2、获取API Key</p>
+<p>3、配置webhook</p>
+<ul>
+<li><p>请求方法: POST</p></li>
+<li><p>请求地址: <a class="reference external" href="https://api.resend.com/emails">https://api.resend.com/emails</a></p></li>
+<li><p>请求头</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bearer &lt;API Key&gt;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>请求体</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;onboarding@resend.dev&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123456@qq.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;html&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;p&gt;&lt;strong&gt;证书到期提醒&lt;/strong&gt;&lt;/p&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="webhookshowdoc">
+<h3>2.4、webhook配置showdoc<a class="headerlink" href="#webhookshowdoc" title="此标题的永久链接"></a></h3>
+<p>showdoc是一个从服务器推送消息到手机的工具，可以通过api接口推送到微信服务号消息</p>
+<p>注册地址：<a class="reference external" href="https://push.showdoc.com.cn/">https://push.showdoc.com.cn/</a></p>
+<ul class="simple">
+<li><p>请求方法: POST</p></li>
+<li><p>请求地址:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://push.showdoc.com.cn/server/api/push/&lt;API<span class="w"> </span>Key&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>请求头</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>请求体</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;域名到期提醒&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{% for row in list %}{{row.domain}} {{row.start_date or &#39;-&#39; }} - {{row.expire_date or &#39;-&#39; }} ({{row.expire_days}}){% endfor %}&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>2.5、webhook发送飞书消息<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h3>
+<p>模板示例由微信群友&#64;kaka 提供</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    &quot;msg_type&quot;: &quot;interactive&quot;,
+    &quot;card&quot;: {
+        &quot;config&quot;: {
+                &quot;wide_screen_mode&quot;: true,
+                &quot;enable_forward&quot;: true
+        },
+        &quot;elements&quot;: [{
+                &quot;tag&quot;: &quot;div&quot;,
+                &quot;text&quot;: {
+                        &quot;tag&quot;: &quot;plain_text&quot;,
+                        &quot;content&quot;: &quot;&quot;,
+                        &quot;lines&quot;: 1
+                        }
+                        ,
+                &quot;fields&quot;: [
+
+                        {
+
+                        &quot;text&quot;: {
+                            &quot;tag&quot;: &quot;lark_md&quot;,
+                            &quot;content&quot;: &quot;**域名证书 **:  &lt;ul&gt; {%- for row in list %} {%- if row.expire_days &gt; 0 %} &lt;li&gt; {{row.domain}} {{&quot;当前域名或证书  申请时间: &quot;}} {{row.start_date or &#39;-&#39; }} - {{&quot;到期时间: &quot;}} {{row.expire_date or &#39;-&#39; }} {{&quot;剩余: &quot;}}( {% if row.expire_days &gt; 0 %} {{row.expire_days}} {% endif %}  ) {{&quot;天; &quot;}} {% endif %} {% endfor %} &lt;/li&gt; &lt;/ul&gt; &quot;
+                        }
+                    }
+
+                ]
+
+                },
+
+
+         {
+                &quot;actions&quot;: [{
+                        &quot;tag&quot;: &quot;button&quot;,
+
+                        &quot;text&quot;: {
+                                &quot;content&quot;: &quot;域名或证书过期提醒 :玫瑰:&quot;,
+                                &quot;tag&quot;: &quot;lark_md&quot;
+                        },
+                        &quot;url&quot;: &quot;https://dc.console.aliyun.com/&quot;,
+                        &quot;type&quot;: &quot;primary&quot;,
+                        &quot;value&quot;: {
+                                         &quot;chosen&quot;: &quot;approve&quot;
+                        }
+                }],
+                &quot;tag&quot;: &quot;action&quot;
+        }],
+        &quot;header&quot;: {
+                &quot;title&quot;: {
+                        &quot;content&quot;: &quot;域名或证书过期  告警&quot;,
+                        &quot;tag&quot;: &quot;plain_text&quot;
+                },
+                &quot;template&quot;: &quot;red&quot;
+        }
+    }
+}
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3>2.6、webhook发送企业微信消息<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h3>
+<p>文档：<a class="reference external" href="https://developer.work.weixin.qq.com/document/path/99110">https://developer.work.weixin.qq.com/document/path/99110</a></p>
+<p>webhook地址</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=693a91f6-7xxx-4bc4-97a0-0ec2sifa5aaa
+</pre></div>
+</div>
+<p>消息体</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;msgtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;广州今日天气：29度，大部分多云，降雨概率：60%&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mentioned_list&quot;</span><span class="p">:[</span><span class="s2">&quot;wangqing&quot;</span><span class="p">,</span><span class="s2">&quot;@all&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;mentioned_mobile_list&quot;</span><span class="p">:[</span><span class="s2">&quot;13800001111&quot;</span><span class="p">,</span><span class="s2">&quot;@all&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>示例：监控证书到期（文本格式）</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;msgtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SSL证书到期提醒：{% for row in list %}{{row.domain}} {{row.start_date or &#39;-&#39; }} - {{row.expire_date or &#39;-&#39; }} ({{row.expire_days}}){% endfor %}&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>示例：监控证书到期（markdown格式）</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;msgtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;markdown&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SSL证书到期提醒&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;### SSL证书到期提醒 🔔\n\n| 域名 | 生效日期 | 到期日期 | 剩余天数 |\n| ---- | -------- | -------- | :--------: |\n{% for row in list %}| {{row.domain}} | {{row.start_date or &#39;未知&#39;}} | {{row.expire_date or &#39;未知&#39;}} | {{row.expire_days}}天 |\n{% endfor %}\n\n&gt; 请及时更新即将到期的SSL证书，以确保网站安全性。&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>示例：网站监控</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;msgtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;markdown&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{monitor_row.title}}监测提醒，请相关同事注意。\n</span>
+<span class="s2">         &gt;请求URL:&lt;font color=\&quot;red\&quot;&gt;{{monitor_row.http_url}}&lt;/font&gt;</span>
+<span class="s2">         &gt;重试次数:&lt;font color=\&quot;red\&quot;&gt;{{monitor_row.allow_error_count}}&lt;/font&gt;</span>
+<span class="s2">         &gt;状态:{% if monitor_row.status==2 %}&lt;font color=\&quot;red\&quot;&gt;失败&lt;/font&gt;{% elif monitor_row.status==1 %}&lt;font color=\&quot;green\&quot;&gt;成功&lt;/font&gt;{% else %}&lt;font color=\&quot;comment\&quot;&gt;未知&lt;/font&gt;{% endif %}&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id9">
+<h2>3、企业微信<a class="headerlink" href="#id9" title="此标题的永久链接"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;touser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UserName&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;msgtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;agentid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000001</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;你的域名证书即将到期\n点击查看&lt;a href=\&quot;http://www.demo.com/\&quot;&gt;Domain Admin&lt;/a&gt;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>自定义通知模板示例</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;touser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UserName&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;msgtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;agentid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000001</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SSL证书到期提醒：\n{% for row in list %}{{row.domain}} {{row.group_name or &#39;-&#39;}} ({{row.expire_days}}){% endfor %}&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>参考：<a class="reference external" href="https://developer.work.weixin.qq.com/document/path/90236">https://developer.work.weixin.qq.com/document/path/90236</a></p>
+</section>
+<section id="id10">
+<h2>4、钉钉<a class="headerlink" href="#id10" title="此标题的永久链接"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;agent_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;agent_id&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;userid_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;userid_list&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;msgtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;域名或证书过期提醒&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>参考文档：<a class="reference external" href="https://open.dingtalk.com/document/orgapp/asynchronous-sending-of-enterprise-session-messages">https://open.dingtalk.com/document/orgapp/asynchronous-sending-of-enterprise-session-messages</a></p>
+</section>
+<section id="id11">
+<h2>5、飞书<a class="headerlink" href="#id11" title="此标题的永久链接"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;receive_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;receive_id&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;msg_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;text\&quot;:\&quot;域名或证书过期提醒\&quot;}&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>参考文档：<a class="reference external" href="https://open.feishu.cn/document/server-docs/im-v1/message/create">https://open.feishu.cn/document/server-docs/im-v1/message/create</a></p>
+</section>
+<section id="id12">
+<h2>6、模板和参数<a class="headerlink" href="#id12" title="此标题的永久链接"></a></h2>
+<p>采用<code class="docutils literal notranslate"><span class="pre">jinja2</span></code> 模板引擎</p>
+<p>WebHook、企业微信、飞书、钉钉均支持自定义通知模板</p>
+<section id="id13">
+<h3>6.1、通用示例<a class="headerlink" href="#id13" title="此标题的永久链接"></a></h3>
+<p>传入模板的参数示例：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;list&quot;</span><span class="p">:[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;www.demo.com&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-06-01&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;expire_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-06-21&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;expire_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>参数说明</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>域名/证书域名</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>string</td>
+<td>生效时间</td>
+</tr>
+<tr>
+<td>expire_date</td>
+<td>string</td>
+<td>过期时间</td>
+</tr>
+<tr>
+<td>expire_days</td>
+<td>int</td>
+<td>剩余天数</td>
+</tr>
+</tbody>
+</table><blockquote>
+<div><p>备注：list仅包含满足通知条件的数据</p>
+</div></blockquote>
+<p>示例</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;域名到期提醒&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{% for row in list %}{{row.domain}} {{row.start_date or &#39;-&#39; }} - {{row.expire_date or &#39;-&#39; }} ({{row.expire_days}}){% endfor %}&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>渲染结果</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;域名到期提醒&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;www.demo.com 2023-06-01 - 2023-06-21 (20)&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>不同的事件参数稍有不同，会有其独特的参数</p>
+</section>
+<section id="id14">
+<h3>6.2、域名到期<a class="headerlink" href="#id14" title="此标题的永久链接"></a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;www.baidu.com&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;group_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;group_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;百度系&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;备注&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;start_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2010-08-28 04:11:35&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;expire_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-08-28 04:11:35&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2010-08-28&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;expire_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-08-28&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;expire_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;domain_registrar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;厦门易名科技股份有限公司&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;domain_registrar_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.ename.net/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icp_company&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;北京百度网讯科技有限公司&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icp_licence&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;京ICP证030173号-1&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;企业服务&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;汽车服务&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;tags_str&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;企业服务、汽车服务&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;is_auto_update&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_expire_monitor&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;create_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-07-20 22:59:20&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;update_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-08-22 16:01:13&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;update_time_label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;13分钟前&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ssl">
+<h3>6.3、SSL证书到期<a class="headerlink" href="#ssl" title="此标题的永久链接"></a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;www.baidu.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;root_domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;baidu.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;group_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;group_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;百度系&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;备注字段&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;start_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-07-06 09:51:06&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;expire_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-08-06 09:51:05&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-07-06&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;expire_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-08-06&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;expire_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">349</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;is_auto_update&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_expire_monitor&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_dynamic_host&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;create_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-08-22 16:28:19&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;update_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-08-22 16:28:19&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;update_time_label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;刚刚&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h3>6.4、监控异常<a class="headerlink" href="#id15" title="此标题的永久链接"></a></h3>
+<p>异常通知和异常恢复通知的字段一致</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;monitor_row&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;名称&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;请求URL&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;allow_error_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;报错信息&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>参数说明</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>报错信息</td>
+</tr>
+<tr>
+<td>monitor_row.title</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>monitor_row.http_url</td>
+<td>string</td>
+<td>请求URL</td>
+</tr>
+<tr>
+<td>monitor_row.allow_error_count</td>
+<td>int</td>
+<td>重试次数</td>
+</tr>
+<tr>
+<td>monitor_row.status</td>
+<td>int</td>
+<td>状态：0未知，1成功，2失败</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="install.html" class="btn btn-neutral float-left" title="安装方式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="ssl-cert.html" class="btn btn-neutral float-right" title="SSL证书申请" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Peng Shiyu.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

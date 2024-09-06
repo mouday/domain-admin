@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>用户手册 &mdash; Domain Admin latest 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="安装方式" href="install.html" />
+    <link rel="prev" title="Domain Admin" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Domain Admin
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">项目简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">使用说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1、快速导入</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2、完整导入</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">安装方式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notify.html">通知配置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssl-cert.html">SSL证书申请</a></li>
+<li class="toctree-l1"><a class="reference internal" href="question.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">扩展插件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan.html">开发计划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">二次开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">升级日志</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article.html">相关文章</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Domain Admin</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">用户手册</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/manual/index.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>用户手册<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<section id="id2">
+<h2>项目简介<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<p>功能：</p>
+<ul class="simple">
+<li><p>权限</p>
+<ul>
+<li><p>用户登录</p></li>
+<li><p>用户退出</p></li>
+<li><p>修改密码</p></li>
+</ul>
+</li>
+<li><p>域名管理</p>
+<ul>
+<li><p>域名添加</p></li>
+<li><p>域名删除</p></li>
+<li><p>域名搜索</p></li>
+<li><p>域名导入、导出功能</p></li>
+<li><p>域名信息</p></li>
+</ul>
+</li>
+<li><p>证书监控</p>
+<ul>
+<li><p>定时监控</p></li>
+<li><p>到期邮件提醒</p></li>
+<li><p>微信提醒</p></li>
+<li><p>手动/自动更新证书信息</p></li>
+</ul>
+</li>
+<li><p>用户管理</p>
+<ul>
+<li><p>添加用户</p></li>
+<li><p>删除用户</p></li>
+<li><p>禁用/启用用户</p></li>
+</ul>
+</li>
+<li><p>监控日志</p></li>
+<li><p>管理界面</p>
+<ul>
+<li><p>api接口（用于二次开发）</p></li>
+<li><p>web浏览器</p></li>
+<li><p>桌面</p></li>
+<li><p><span class="raw-html-m2r"><del>移动端（app+小程序）</del></span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>使用说明<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<p>批量导入域名</p>
+<section id="id4">
+<h3>1、快速导入<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h3>
+<p>以<code class="docutils literal notranslate"><span class="pre">.txt</span></code>结尾的文件，视为快速导入文件</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>支持字段</th>
+<th>必填</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>域名</td>
+<td>是</td>
+</tr>
+<tr>
+<td>端口</td>
+<td>否，默认：443</td>
+</tr>
+</tbody>
+</table><p>示例：domain.txt</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>www.baidu.com
+www.zhihu.com:443
+</pre></div>
+</div>
+<p>默认端口是443，如果是非443端口可以用<code class="docutils literal notranslate"><span class="pre">:</span></code>冒号分隔域名和端口号</p>
+</section>
+<section id="id5">
+<h3>2、完整导入<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h3>
+<p>以<code class="docutils literal notranslate"><span class="pre">.csv</span></code>结尾的文件，视为完整导入文件</p>
+<blockquote>
+<div><p>注意：用普通文件编辑器编辑即可，不要用excel编辑，可能会出现乱码问题</p>
+</div></blockquote>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>支持字段</th>
+<th>必填</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>域名</td>
+<td>是</td>
+</tr>
+<tr>
+<td>端口</td>
+<td>否，默认：443</td>
+</tr>
+<tr>
+<td>分组</td>
+<td>否</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>否</td>
+</tr>
+</tbody>
+</table><p>示例：domain.csv</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>域名,端口,分组,备注
+www.zhihu.com,,问答,知乎
+www.baidu.com,443,,
+</pre></div>
+</div>
+<p>备注：逗号不能省略，字段顺序可以改变，多余的字段会被忽略</p>
+<p>首次导入数据后，后台会更新证书信息，此时不要频繁操作，否则会出现锁表错误。</p>
+<p>稍等一会，刷新页面，就能看到完整的证书信息了。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Domain Admin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="install.html" class="btn btn-neutral float-right" title="安装方式" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Peng Shiyu.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
