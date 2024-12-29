@@ -13,64 +13,23 @@ Domain Admin是一个Flask应用，启动部署方式和Flask应用是一样的
 > - 【测试环境】可以使用默认的sqlite数据库;
 > - 【生产环境】推荐使用MySQL数据库，避免锁表，配置方式:[可选配置](#id5)
 
-## 方式一：pip安装
+## 方式一：宝塔面板安装
 
-运行环境：
+[![宝塔服务器面板，一键全能部署及管理](https://img.shields.io/badge/BT_Deploy-Install-20a53a)](https://www.bt.cn/u/MaBJJC)
 
-- Python >= 2.7 或者 Python >= 3.4
-- sqlite、openssl
+宝塔Linux面板是提升运维效率的服务器管理软件，支持一键LAMP/LNMP/集群/监控/网站/FTP/数据库/JAVA等100多项服务器管理功能。
 
-python的安装，可以参考文章：[Linux环境下安装Python3](https://pengshiyu.blog.csdn.net/article/details/85304557)
+有30个人的专业团队研发及维护，经过200多个版本的迭代，功能全，少出错且足够安全，已获得全球百万用户认可安装。
 
-可以使用 `pyenv` + `venv` 管理多个Python版本和隔离虚拟环境
+如果还未安装宝塔，请先前往[下载](https://www.bt.cn/u/MaBJJC)注册安装
 
-确保已经安装Python解释器
+面板版本v9.2.0： 宝塔面板 --> Docker --> 应用商店 --> Domain Admin --> 安装
 
-```bash
-$ python3 --version
-Python 3.7.0
-```
+[【教程贴】Docker应用-Domain Admin 安装帮助](https://www.bt.cn/bbs/thread-139621-1-1.html)
 
-linux / macos 安装
+<a title="宝塔服务器面板，一键全能部署及管理" href="https://www.bt.cn/u/MaBJJC"><img src="https://mouday.github.io/img/2024/10/24/fxkd3qe.jpg" width="200"></a>
 
-```bash
-# 创建名为 venv 的虚拟环境并激活
-$ python3 -m venv venv && source venv/bin/activate
-
-# 安装 domain-admin
-$ pip install gunicorn domain-admin
-
-# 启动运行
-$ gunicorn --bind '127.0.0.1:8000' 'domain_admin.main:app'
-```
-
-windows 安装
-
-```bash
-# 创建名为 venv 的虚拟环境
-> py -3 -m venv venv
-
-# 激活虚拟环境
-> venv\Scripts\activate
-
-# 安装 domain-admin
-> pip install waitress domain-admin
-
-# 启动运行
-> waitress-serve --listen=127.0.0.1:8000 domain_admin.main:app
-```
-
-访问地址：http://127.0.0.1:8000
-
-升级到最新版本
-
-```bash
-$ pip3 install -U domain-admin -i https://pypi.org/simple
-```
-
-Python2.7如果安装依赖报错，可以使用依赖文件 [production-2.7.txt](https://github.com/mouday/domain-admin/tree/master/requirements/production-2.7.txt)
-
-先安装好依赖文件的依赖，再安装domain-admin即可
+![](https://mouday.github.io/img/2024/10/31/63ke2ij.png)
 
 ## 方式二：docker启动
 
@@ -122,8 +81,33 @@ services:
 ```
 
 可用的docker镜像站
-- https://docker.aityp.com/
-- https://docker.catiz.eu.org/
+
+```bash
+$ sudo mkdir -p /etc/docker
+
+$ sudo tee /etc/docker/daemon.json <<EOF
+{
+"registry-mirrors": [
+"https://dockerpull.com",
+"https://dockerproxy.cn",
+"https://docker.loli.voto",
+"https://docker.chenby.cn",
+"https://docker-cf.registry.cyou",
+"https://docker.m.daocloud.io",
+"https://docker.ketches.cn",
+"https://docker.1panel.dev",
+"https://docker.1panel.live",
+"https://docker.rainbond.cc",
+"https://hub.rat.dev",
+"https://docker.aityp.com/",
+"https://docker.catiz.eu.org/"
+]
+}
+EOF
+
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+```
 
 ## 方式三：下载源码安装
 
@@ -299,6 +283,66 @@ spec:
           timeoutSeconds: 1
 ```
 
+
+## 方式六：pip安装
+
+运行环境：
+
+- Python >= 2.7 或者 Python >= 3.4
+- sqlite、openssl
+
+python的安装，可以参考文章：[Linux环境下安装Python3](https://pengshiyu.blog.csdn.net/article/details/85304557)
+
+可以使用 `pyenv` + `venv` 管理多个Python版本和隔离虚拟环境
+
+确保已经安装Python解释器
+
+```bash
+$ python3 --version
+Python 3.7.0
+```
+
+linux / macos 安装
+
+```bash
+# 创建名为 venv 的虚拟环境并激活
+$ python3 -m venv venv && source venv/bin/activate
+
+# 安装 domain-admin
+$ pip install gunicorn domain-admin
+
+# 启动运行
+$ gunicorn --bind '127.0.0.1:8000' 'domain_admin.main:app'
+```
+
+windows 安装
+
+```bash
+# 创建名为 venv 的虚拟环境
+> py -3 -m venv venv
+
+# 激活虚拟环境
+> venv\Scripts\activate
+
+# 安装 domain-admin
+> pip install waitress domain-admin
+
+# 启动运行
+> waitress-serve --listen=127.0.0.1:8000 domain_admin.main:app
+```
+
+访问地址：http://127.0.0.1:8000
+
+升级到最新版本
+
+```bash
+$ pip3 install -U domain-admin -i https://pypi.org/simple
+```
+
+Python2.7如果安装依赖报错，可以使用依赖文件 [production-2.7.txt](https://github.com/mouday/domain-admin/tree/master/requirements/production-2.7.txt)
+
+先安装好依赖文件的依赖，再安装domain-admin即可
+
 ## 其他部署方式
 
 可以参考[https://flask.palletsprojects.com/en/2.3.x/deploying/](https://flask.palletsprojects.com/en/2.3.x/deploying/)
@@ -352,6 +396,9 @@ APP_MODE=production
 
 # 允许远程执行的命令白名单，多个英文分号（;）分隔
 ALLOW_COMMANDS=/opt/nginx/sbin/nginx -s reload;nginx -s reload
+
+# 允许用户注册，目前仅支持邮箱验证码登录
+ENABLED_REGISTER=true
 ```
 
 还可以通过环境变量来暴露

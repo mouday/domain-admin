@@ -1,25 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="zh-CN">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>安装方式 &mdash; Domain Admin latest 文档</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=1f19b280"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
@@ -38,9 +35,6 @@
           <a href="../index.html" class="icon icon-home">
             Domain Admin
           </a>
-              <div class="version">
-                latest
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
@@ -52,15 +46,16 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">用户手册</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">安装方式</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pip">方式一：pip安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">方式一：宝塔面板安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#docker">方式二：docker启动</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">方式三：下载源码安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">方式三：下载源码安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#panel">方式四：1Panel面板安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k8s">方式五：k8s部署</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">其他部署方式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">平滑升级</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">可选配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">配置参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pip">方式六：pip安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">其他部署方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">平滑升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">可选配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">配置参数</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="notify.html">通知配置</a></li>
@@ -115,52 +110,16 @@
 <li><p>【生产环境】推荐使用MySQL数据库，避免锁表，配置方式:<a class="reference external" href="#id5">可选配置</a></p></li>
 </ul>
 </div></blockquote>
-<section id="pip">
-<h2>方式一：pip安装<a class="headerlink" href="#pip" title="此标题的永久链接"></a></h2>
-<p>运行环境：</p>
-<ul class="simple">
-<li><p>Python &gt;= 2.7 或者 Python &gt;= 3.4</p></li>
-<li><p>sqlite、openssl</p></li>
-</ul>
-<p>python的安装，可以参考文章：<a class="reference external" href="https://pengshiyu.blog.csdn.net/article/details/85304557">Linux环境下安装Python3</a></p>
-<p>可以使用 <code class="docutils literal notranslate"><span class="pre">pyenv</span></code> + <code class="docutils literal notranslate"><span class="pre">venv</span></code> 管理多个Python版本和隔离虚拟环境</p>
-<p>确保已经安装Python解释器</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>--version
-Python<span class="w"> </span><span class="m">3</span>.7.0
-</pre></div>
-</div>
-<p>linux / macos 安装</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建名为 venv 的虚拟环境并激活</span>
-$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
-
-<span class="c1"># 安装 domain-admin</span>
-$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>gunicorn<span class="w"> </span>domain-admin
-
-<span class="c1"># 启动运行</span>
-$<span class="w"> </span>gunicorn<span class="w"> </span>--bind<span class="w"> </span><span class="s1">&#39;127.0.0.1:8000&#39;</span><span class="w"> </span><span class="s1">&#39;domain_admin.main:app&#39;</span>
-</pre></div>
-</div>
-<p>windows 安装</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建名为 venv 的虚拟环境</span>
-&gt;<span class="w"> </span>py<span class="w"> </span>-3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
-
-<span class="c1"># 激活虚拟环境</span>
-&gt;<span class="w"> </span>venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
-
-<span class="c1"># 安装 domain-admin</span>
-&gt;<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>waitress<span class="w"> </span>domain-admin
-
-<span class="c1"># 启动运行</span>
-&gt;<span class="w"> </span>waitress-serve<span class="w"> </span>--listen<span class="o">=</span><span class="m">127</span>.0.0.1:8000<span class="w"> </span>domain_admin.main:app
-</pre></div>
-</div>
-<p>访问地址：<a class="reference external" href="http://127.0.0.1:8000">http://127.0.0.1:8000</a></p>
-<p>升级到最新版本</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>domain-admin<span class="w"> </span>-i<span class="w"> </span>https://pypi.org/simple
-</pre></div>
-</div>
-<p>Python2.7如果安装依赖报错，可以使用依赖文件 <a class="reference external" href="https://github.com/mouday/domain-admin/tree/master/requirements/production-2.7.txt">production-2.7.txt</a></p>
-<p>先安装好依赖文件的依赖，再安装domain-admin即可</p>
+<section id="id3">
+<h2>方式一：宝塔面板安装<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<a class="reference external image-reference" href="https://www.bt.cn/u/MaBJJC"><img alt="宝塔服务器面板，一键全能部署及管理" src="https://img.shields.io/badge/BT_Deploy-Install-20a53a" /></a>
+<p>宝塔Linux面板是提升运维效率的服务器管理软件，支持一键LAMP/LNMP/集群/监控/网站/FTP/数据库/JAVA等100多项服务器管理功能。</p>
+<p>有30个人的专业团队研发及维护，经过200多个版本的迭代，功能全，少出错且足够安全，已获得全球百万用户认可安装。</p>
+<p>如果还未安装宝塔，请先前往<a class="reference external" href="https://www.bt.cn/u/MaBJJC">下载</a>注册安装</p>
+<p>面板版本v9.2.0： 宝塔面板 –&gt; Docker –&gt; 应用商店 –&gt; Domain Admin –&gt; 安装</p>
+<p><a class="reference external" href="https://www.bt.cn/bbs/thread-139621-1-1.html">【教程贴】Docker应用-Domain Admin 安装帮助</a></p>
+<p><span class="raw-html-m2r"><a title="宝塔服务器面板，一键全能部署及管理" href="https://www.bt.cn/u/MaBJJC"><img src="https://mouday.github.io/img/2024/10/24/fxkd3qe.jpg" width="200"></a></span></p>
+<a class="reference external image-reference" href="https://mouday.github.io/img/2024/10/31/63ke2ij.png"><img alt="" src="https://mouday.github.io/img/2024/10/31/63ke2ij.png" /></a>
 </section>
 <section id="docker">
 <h2>方式二：docker启动<a class="headerlink" href="#docker" title="此标题的永久链接"></a></h2>
@@ -205,13 +164,35 @@ mouday/domain-admin:latest
 </pre></div>
 </div>
 <p>可用的docker镜像站</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docker.aityp.com/">https://docker.aityp.com/</a></p></li>
-<li><p><a class="reference external" href="https://docker.catiz.eu.org/">https://docker.catiz.eu.org/</a></p></li>
-</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/docker
+
+$<span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/docker/daemon.json<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">{</span>
+<span class="s">&quot;registry-mirrors&quot;: [</span>
+<span class="s">&quot;https://dockerpull.com&quot;,</span>
+<span class="s">&quot;https://dockerproxy.cn&quot;,</span>
+<span class="s">&quot;https://docker.loli.voto&quot;,</span>
+<span class="s">&quot;https://docker.chenby.cn&quot;,</span>
+<span class="s">&quot;https://docker-cf.registry.cyou&quot;,</span>
+<span class="s">&quot;https://docker.m.daocloud.io&quot;,</span>
+<span class="s">&quot;https://docker.ketches.cn&quot;,</span>
+<span class="s">&quot;https://docker.1panel.dev&quot;,</span>
+<span class="s">&quot;https://docker.1panel.live&quot;,</span>
+<span class="s">&quot;https://docker.rainbond.cc&quot;,</span>
+<span class="s">&quot;https://hub.rat.dev&quot;,</span>
+<span class="s">&quot;https://docker.aityp.com/&quot;,</span>
+<span class="s">&quot;https://docker.catiz.eu.org/&quot;</span>
+<span class="s">]</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+</pre></div>
+</div>
 </section>
-<section id="id3">
-<h2>方式三：下载源码安装<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<section id="id5">
+<h2>方式三：下载源码安装<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
 <p>下载地址：<a class="reference external" href="https://github.com/mouday/domain-admin/releases">https://github.com/mouday/domain-admin/releases</a></p>
 <p>本方式仅适用于二次开发，推荐采用 pip安装 或者 docker启动 的方式体验</p>
 <p>例如：以<code class="docutils literal notranslate"><span class="pre">v1.5.8</span></code>为例</p>
@@ -363,20 +344,67 @@ Press<span class="w"> </span>CTRL+C<span class="w"> </span>to<span class="w"> </
 </pre></div>
 </div>
 </section>
-<section id="id4">
-<h2>其他部署方式<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<section id="pip">
+<h2>方式六：pip安装<a class="headerlink" href="#pip" title="此标题的永久链接"></a></h2>
+<p>运行环境：</p>
+<ul class="simple">
+<li><p>Python &gt;= 2.7 或者 Python &gt;= 3.4</p></li>
+<li><p>sqlite、openssl</p></li>
+</ul>
+<p>python的安装，可以参考文章：<a class="reference external" href="https://pengshiyu.blog.csdn.net/article/details/85304557">Linux环境下安装Python3</a></p>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">pyenv</span></code> + <code class="docutils literal notranslate"><span class="pre">venv</span></code> 管理多个Python版本和隔离虚拟环境</p>
+<p>确保已经安装Python解释器</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>--version
+Python<span class="w"> </span><span class="m">3</span>.7.0
+</pre></div>
+</div>
+<p>linux / macos 安装</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建名为 venv 的虚拟环境并激活</span>
+$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+
+<span class="c1"># 安装 domain-admin</span>
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>gunicorn<span class="w"> </span>domain-admin
+
+<span class="c1"># 启动运行</span>
+$<span class="w"> </span>gunicorn<span class="w"> </span>--bind<span class="w"> </span><span class="s1">&#39;127.0.0.1:8000&#39;</span><span class="w"> </span><span class="s1">&#39;domain_admin.main:app&#39;</span>
+</pre></div>
+</div>
+<p>windows 安装</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建名为 venv 的虚拟环境</span>
+&gt;<span class="w"> </span>py<span class="w"> </span>-3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+
+<span class="c1"># 激活虚拟环境</span>
+&gt;<span class="w"> </span>venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+
+<span class="c1"># 安装 domain-admin</span>
+&gt;<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>waitress<span class="w"> </span>domain-admin
+
+<span class="c1"># 启动运行</span>
+&gt;<span class="w"> </span>waitress-serve<span class="w"> </span>--listen<span class="o">=</span><span class="m">127</span>.0.0.1:8000<span class="w"> </span>domain_admin.main:app
+</pre></div>
+</div>
+<p>访问地址：<a class="reference external" href="http://127.0.0.1:8000">http://127.0.0.1:8000</a></p>
+<p>升级到最新版本</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>domain-admin<span class="w"> </span>-i<span class="w"> </span>https://pypi.org/simple
+</pre></div>
+</div>
+<p>Python2.7如果安装依赖报错，可以使用依赖文件 <a class="reference external" href="https://github.com/mouday/domain-admin/tree/master/requirements/production-2.7.txt">production-2.7.txt</a></p>
+<p>先安装好依赖文件的依赖，再安装domain-admin即可</p>
+</section>
+<section id="id6">
+<h2>其他部署方式<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
 <p>可以参考<a class="reference external" href="https://flask.palletsprojects.com/en/2.3.x/deploying/">https://flask.palletsprojects.com/en/2.3.x/deploying/</a></p>
 </section>
-<section id="id5">
-<h2>平滑升级<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<section id="id7">
+<h2>平滑升级<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h2>
 <p>Domain Admin所有版本都支持平滑升级</p>
 <p>安装最新版，重启即可</p>
 <blockquote>
 <div><p>注意：如果是docker安装的，注意<code class="docutils literal notranslate"><span class="pre">database</span></code> 目录是不是手动挂载的，不要删除</p>
 </div></blockquote>
 </section>
-<section id="id6">
-<h2>可选配置<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
+<section id="id8">
+<h2>可选配置<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h2>
 <p>通过配置<code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件或者直接设置系统环境变量</p>
 <p>1、修改数据库存储方式</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># sqlite 默认 （少量用户推荐）</span>
@@ -395,8 +423,8 @@ Press<span class="w"> </span>CTRL+C<span class="w"> </span>to<span class="w"> </
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h2>配置参数<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h2>
+<section id="id9">
+<h2>配置参数<a class="headerlink" href="#id9" title="此标题的永久链接"></a></h2>
 <p>可以通过运行目录下添加 <code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件配置项目的可选参数</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数据库链接参数</span>
 <span class="c1"># 支持数据库：sqlite（默认）、mysql、postgresql</span>
@@ -408,6 +436,9 @@ Press<span class="w"> </span>CTRL+C<span class="w"> </span>to<span class="w"> </
 
 <span class="c1"># 允许远程执行的命令白名单，多个英文分号（;）分隔</span>
 <span class="nv">ALLOW_COMMANDS</span><span class="o">=</span>/opt/nginx/sbin/nginx<span class="w"> </span>-s<span class="w"> </span>reload<span class="p">;</span>nginx<span class="w"> </span>-s<span class="w"> </span>reload
+
+<span class="c1"># 允许用户注册，目前仅支持邮箱验证码登录</span>
+<span class="nv">ENABLED_REGISTER</span><span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
 <p>还可以通过环境变量来暴露</p>
@@ -475,7 +506,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </sp
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; 版权所有 2023, Peng Shiyu.</p>
+    <p>&#169; 版权所有 2023, Peng Shiyu。</p>
   </div>
 
   利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
